@@ -1,13 +1,33 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 
-const Posts = lazy(() => import('./pages/Posts').then(m => ({ default: m.Posts })))
-const AICourse = lazy(() => import('./pages/AICourse').then(m => ({ default: m.AICourse })))
-const ClosedChannel = lazy(() => import('./pages/ClosedChannel').then(m => ({ default: m.ClosedChannel })))
-const WorkTogether = lazy(() => import('./pages/Ads').then(m => ({ default: m.WorkTogether })))
+const postsImport = () => import('./pages/Posts').then(m => ({ default: m.Posts }))
+const courseImport = () => import('./pages/AICourse').then(m => ({ default: m.AICourse }))
+const closedImport = () => import('./pages/ClosedChannel').then(m => ({ default: m.ClosedChannel }))
+const adsImport = () => import('./pages/Ads').then(m => ({ default: m.WorkTogether }))
+
+const Posts = lazy(postsImport)
+const AICourse = lazy(courseImport)
+const ClosedChannel = lazy(closedImport)
+const WorkTogether = lazy(adsImport)
+
+// Preload all chunks after home page renders so subpages open instantly
+function usePreloadChunks() {
+  useEffect(() => {
+    const id = requestIdleCallback(() => {
+      postsImport()
+      courseImport()
+      closedImport()
+      adsImport()
+    })
+    return () => cancelIdleCallback(id)
+  }, [])
+}
 
 function App() {
+  usePreloadChunks()
+
   return (
     <Suspense fallback={null}>
       <Routes>
