@@ -1,0 +1,236 @@
+import { BackButton } from '../components/BackButton'
+import { CourseEntryCard } from '../components/CourseEntryCard'
+import { Footer } from '../components/Footer'
+
+interface CourseEntry {
+  postId: number
+  quote: string
+  context?: string
+  link: string
+}
+
+interface TwitterEntry {
+  handle: string
+  description: string
+  link: string
+}
+
+interface Subsection {
+  id: string
+  title: string
+  entries: CourseEntry[]
+}
+
+interface Section {
+  id: string
+  title: string
+  entries?: CourseEntry[]
+  subsections?: Subsection[]
+  twitter?: TwitterEntry[]
+}
+
+const sections: Section[] = [
+  {
+    id: 'transformation',
+    title: 'Жизнь до и после',
+    entries: [
+      { postId: 1582, quote: 'Это не AI заберет твою работу — это будет твой коллега с AI', context: 'Пост, с которого тысячи людей пошли пробовать', link: 'https://t.me/danokhlopkov/1582' },
+      { postId: 1586, quote: 'Once you try Claude Code, you never go back', context: 'CC автоматизирует все, что можно сделать на компе. Уметь прогать не надо', link: 'https://t.me/danokhlopkov/1586' },
+      { postId: 1581, quote: 'БУМ, игра готова ваншотом (почти)', context: 'Plan mode, $20 vs $100, тип от создателя Claude Code', link: 'https://t.me/danokhlopkov/1581' },
+      { postId: 1585, quote: 'Всё, я в 2030. Теперь чисто голосовухами двигаюсь', context: 'Claude Code + Obsidian + голосовой ввод', link: 'https://t.me/danokhlopkov/1585' },
+      { postId: 1582, quote: 'Сейчас идея и есть исполнение', context: '70% всего можно запрогать с нуля бесплатно', link: 'https://t.me/danokhlopkov/1582' },
+    ],
+  },
+  {
+    id: 'getting-started',
+    title: 'Как начать',
+    entries: [
+      { postId: 1561, quote: 'Вайб-кодинг: почему текстовый интерфейс, как брифовать агента', context: 'Полный гайд для начинающих', link: 'https://t.me/danokhlopkov/1561' },
+      { postId: 1304, quote: 'Факты с источниками — погружаешься в любую тему бесконечно глубоко', context: 'Perplexity — первый шаг к AI-инструментам', link: 'https://t.me/danokhlopkov/1304' },
+      { postId: 1364, quote: 'Запустил Ламу локально — бесплатно, 4.5GB, без интернета', context: 'Свой LLM на ноуте — Alt-Tab вместо Google', link: 'https://t.me/danokhlopkov/1364' },
+      { postId: 1587, quote: 'Как устроены AI-агенты и как с ними норм прогать', context: 'Разбор на пальцах — лонгрид на Хабре', link: 'https://habr.com/ru/articles/987382/' },
+      { postId: 1496, quote: 'Single prompt vs prompt chain vs agent', context: 'Кураторский список инструментов для старта', link: 'https://t.me/danokhlopkov/1496' },
+      { postId: 1586, quote: 'Сначала сделай хорошо себе: автоматизируй рутинку', context: 'Совет коллеге — через неделю результат заметен всем', link: 'https://t.me/danokhlopkov/1586' },
+    ],
+  },
+  {
+    id: 'practice',
+    title: 'Практика и кейсы',
+    subsections: [
+      {
+        id: 'practice-workflow',
+        title: 'Методология',
+        entries: [
+          { postId: 1583, quote: 'ОТКРЫВАЕШЬ НОВЫЙ ЧАТ — никакого context rot', context: 'Полный флоу: идея → спека → plan mode → execute', link: 'https://t.me/danokhlopkov/1583' },
+          { postId: 1504, quote: 'Скетч → прототип → спецификация', context: 'Как прогать новый проект с LLM', link: 'https://t.me/danokhlopkov/1504' },
+          { postId: 1610, quote: 'Git worktrees: 3-5 параллельных сессий одновременно', context: 'Типсы от создателя CC + self-improving CLAUDE.md', link: 'https://t.me/danokhlopkov/1610' },
+          { postId: 1612, quote: 'Задавай наводящие вопросы. Не останавливайся. Покажи, не рассказывай', context: 'Промпты для AI-агентов + playground skill', link: 'https://t.me/danokhlopkov/1612' },
+        ],
+      },
+      {
+        id: 'practice-assistant',
+        title: 'Личный ассистент',
+        entries: [
+          { postId: 1589, quote: 'Второй мозг — личная база знаний, которой можно задавать вопросы', context: 'Obsidian + CLAUDE.md', link: 'https://t.me/danokhlopkov/1589' },
+          { postId: 1591, quote: 'Как сделать личного AI-ассистента дома', context: 'Пошаговая инструкция — лонгрид на VC.ru', link: 'https://vc.ru/id505848/2703538-lichnyj-ai-assistent-claude-code' },
+          { postId: 1585, quote: 'Агент сам ведёт дневник и экономит часы', context: 'Claude Code + Obsidian + takopi', link: 'https://t.me/danokhlopkov/1585' },
+        ],
+      },
+      {
+        id: 'practice-work',
+        title: 'Автоматизация работы',
+        entries: [
+          { postId: 1588, quote: 'Дал DATABASE_URL — через 7 минут присылается файл с метриками', context: 'Агент сам считает продуктовые метрики', link: 'https://t.me/danokhlopkov/1588' },
+          { postId: 1621, quote: '7 шагов: собираем AI-аналитика', context: 'Увольняем джуниора — лонгрид на Хабре', link: 'https://habr.com/ru/articles/996958/' },
+          { postId: 1606, quote: 'Собрал доки, библиотеки и best practices в одном месте', context: 'llms-txt — чтобы агент понимал твой продукт', link: 'https://t.me/danokhlopkov/1606' },
+        ],
+      },
+      {
+        id: 'practice-extend',
+        title: 'Прокачка агента',
+        entries: [
+          { postId: 1607, quote: 'Полезные скиллы и MCP — agent-browser, coolify', context: 'Быстрый способ прокачать агента без кода', link: 'https://t.me/danokhlopkov/1607' },
+          { postId: 1616, quote: '7 ошибок при написании скиллов', context: 'Триггеры, имена, формат — чтобы агент не тупил', link: 'https://t.me/danokhlopkov/1616' },
+          { postId: 1626, quote: 'Claude + Codex: Dual Review — моих правок становится меньше', context: 'Два AI ревьюят друг друга', link: 'https://t.me/danokhlopkov/1626' },
+          { postId: 1628, quote: '21 неудобный вопрос для агента', context: 'Диагностические вопросы — превращают агента в инструмент', link: 'https://t.me/danokhlopkov/1628' },
+          { postId: 1622, quote: 'Будьте аккуратны скачивая программы', context: 'Безопасность: фейковые установщики Claude Code', link: 'https://t.me/danokhlopkov/1622' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'future',
+    title: 'Мысли о будущем',
+    entries: [
+      { postId: 1629, quote: '3 профессии: менеджер агентов, системщик, доменный переводчик', context: 'Единица работы — токен, купленный интеллект', link: 'https://t.me/danokhlopkov/1629' },
+      { postId: 1611, quote: 'MVP собирается за выходные вайбкодингом', context: 'Где найти идею для SaaS — acquire.com метод', link: 'https://t.me/danokhlopkov/1611' },
+      { postId: 1524, quote: 'Джуны RIP', context: 'Как меняется рынок труда', link: 'https://t.me/danokhlopkov/1524' },
+      { postId: 1608, quote: 'AI-агенты придумали свою религию', context: 'Чат AI-агентов — комьюнити как ускоритель', link: 'https://t.me/danokhlopkov/1608' },
+    ],
+  },
+  {
+    id: 'twitter',
+    title: 'Кого читать',
+    twitter: [
+      { handle: '@karpathy', description: 'Топ AI папик из OpenAI, Tesla и Стенфорда', link: 'https://x.com/karpathy' },
+      { handle: '@levelsio', description: 'Билд ин паблик + солопренер + номад + вайбкодер', link: 'https://x.com/levelsio' },
+      { handle: '@bcherny', description: 'Папка Claude Code', link: 'https://x.com/bcherny' },
+      { handle: '@trq212', description: 'Пишет апдейты по Claude Code первым', link: 'https://x.com/trq212' },
+      { handle: '@banteg', description: 'Создатель takopi', link: 'https://x.com/banteg' },
+      { handle: '@GeoffreyHuntley', description: 'Изобретатель Ralph Loop', link: 'https://x.com/GeoffreyHuntley' },
+    ],
+  },
+]
+
+export function AICourse() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <div className="page">
+      <div className="subpage-header">
+        <BackButton />
+        <h1 className="subpage-title">AI Agents</h1>
+        <p className="subpage-subtitle">
+          Бесплатный курс. Каждая карточка — ключевая мысль из поста. Жми — читай оригинал.
+        </p>
+      </div>
+
+      {/* TOC */}
+      <div className="section-label">
+        <span>Оглавление</span>
+        <div className="section-label-line" />
+      </div>
+      <div className="course-section">
+        {sections.map((s) => (
+          <button
+            key={s.id}
+            className="toc-row"
+            onClick={() => scrollTo(s.id)}
+          >
+            {s.title}
+            <i className="ri-arrow-right-line" style={{ fontSize: 16, opacity: 0.3 }} />
+          </button>
+        ))}
+      </div>
+
+      {/* Sections */}
+      {sections.map((section) => (
+        <div key={section.id} id={section.id}>
+          <div className="section-label">
+            <span>{section.title}</span>
+            <div className="section-label-line" />
+          </div>
+
+          {/* Flat entries */}
+          {section.entries && (
+            <div className="course-section">
+              {section.entries.map((entry, i) => (
+                <CourseEntryCard
+                  key={`${entry.postId}-${i}`}
+                  quote={entry.quote}
+                  context={entry.context}
+                  link={entry.link}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Subsections */}
+          {section.subsections && (
+            <div className="course-section">
+              {section.subsections.map((sub) => (
+                <div key={sub.id} id={sub.id}>
+                  <div className="subsection-header">{sub.title}</div>
+                  {sub.entries.map((entry, i) => (
+                    <CourseEntryCard
+                      key={`${entry.postId}-${i}`}
+                      quote={entry.quote}
+                      context={entry.context}
+                      link={entry.link}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Twitter list */}
+          {section.twitter && (
+            <div className="twitter-section">
+              {section.twitter.map((t) => (
+                <a
+                  key={t.handle}
+                  href={t.link}
+                  target="_blank"
+                  rel="noopener"
+                  className="twitter-entry"
+                >
+                  <div className="twitter-entry-info">
+                    <span className="twitter-entry-handle">{t.handle}</span>
+                    <span className="twitter-entry-desc">{t.description}</span>
+                  </div>
+                  <i className="ri-arrow-right-up-line" style={{ fontSize: 16, opacity: 0.3 }} />
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* CTA */}
+      <a
+        href="https://t.me/+4RC6ScUJArk3YTFi"
+        target="_blank"
+        rel="noopener"
+        className="cta-btn"
+      >
+        <span>Задать вопрос в чате</span>
+        <i className="ri-arrow-right-up-line" style={{ fontSize: 20 }} />
+      </a>
+
+      <Footer />
+    </div>
+  )
+}
