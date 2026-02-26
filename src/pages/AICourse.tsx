@@ -134,6 +134,8 @@ const sections: Section[] = [
       { handle: '@trq212', description: 'Пишет апдейты по Claude Code первым', link: 'https://x.com/trq212' },
       { handle: '@banteg', description: 'Создатель takopi', link: 'https://x.com/banteg' },
       { handle: '@GeoffreyHuntley', description: 'Изобретатель Ralph Loop', link: 'https://x.com/GeoffreyHuntley' },
+      { handle: '@insuline_eth', description: 'DeFi разраб, давно познавший агентов', link: 'https://t.me/insuline_eth' },
+      { handle: '@og_mishgun', description: 'Инди-хакер, солопренер, web3', link: 'https://t.me/og_mishgun' },
     ],
   },
 ]
