@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 import { openUrl } from '../openUrl'
 
-const SHARE_URL = 'https://t.me/ohldbot'
+const SHARE_URL = 'https://t.me/ohldbot/ooo'
 const SHARE_TEXT = 'Бесплатный курс по AI-агентам от @danokhlopkov'
 
 function handleShare() {
