@@ -1,3 +1,5 @@
+import { openUrl } from '../openUrl'
+
 interface CourseEntryCardProps {
   quote: string
   context?: string
@@ -6,9 +8,9 @@ interface CourseEntryCardProps {
 
 export function CourseEntryCard({ quote, context, link }: CourseEntryCardProps) {
   return (
-    <a href={link} target="_blank" rel="noopener" className="course-entry">
+    <div className="course-entry" onClick={() => openUrl(link)} role="link">
       <p className="course-entry-quote">{quote}</p>
       {context && <p className="course-entry-context">{context}</p>}
-    </a>
+    </div>
   )
 }

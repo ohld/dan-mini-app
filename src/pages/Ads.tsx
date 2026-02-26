@@ -1,6 +1,7 @@
 import { BackButton } from '../components/BackButton'
 import { Footer } from '../components/Footer'
 import { ArrowRightUpIcon } from '../components/Icons'
+import { openUrl } from '../openUrl'
 
 export function WorkTogether() {
   return (
@@ -27,18 +28,17 @@ export function WorkTogether() {
         </p>
       </div>
 
-      <a
-        href="https://www.linkedin.com/in/danokhlopkov/"
-        target="_blank"
-        rel="noopener"
+      <div
         className="about-card"
+        onClick={() => openUrl('https://www.linkedin.com/in/danokhlopkov/')}
+        role="link"
       >
         <div className="nav-row-content">
           <span className="nav-row-title">LinkedIn</span>
           <span className="nav-row-subtitle">Весь опыт и бэкграунд</span>
         </div>
         <ArrowRightUpIcon size={18} style={{ opacity: 0.3 }} />
-      </a>
+      </div>
 
       {/* Ads */}
       <div className="section-label">
@@ -70,15 +70,14 @@ export function WorkTogether() {
         </p>
       </div>
 
-      <a
-        href="https://t.me/danokhlopkov?direct"
-        target="_blank"
-        rel="noopener"
+      <div
         className="cta-btn"
+        onClick={() => openUrl('https://t.me/danokhlopkov?direct')}
+        role="link"
       >
         <span>Написать в ТГ</span>
         <ArrowRightUpIcon size={20} />
-      </a>
+      </div>
 
       <Footer />
     </div>

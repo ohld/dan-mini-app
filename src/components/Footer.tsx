@@ -1,4 +1,5 @@
 import { TelegramIcon, TwitterXIcon, YoutubeIcon, GithubIcon, LinkedinIcon } from './Icons'
+import { openUrl } from '../openUrl'
 
 const socials = [
   { url: 'https://t.me/danokhlopkov', icon: <TelegramIcon /> },
@@ -13,9 +14,9 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-socials">
         {socials.map((s) => (
-          <a key={s.url} href={s.url} target="_blank" rel="noopener">
+          <span key={s.url} onClick={() => openUrl(s.url)} role="link" style={{ cursor: 'pointer' }}>
             {s.icon}
-          </a>
+          </span>
         ))}
       </div>
       <span className="footer-copy">© 2026 Даниил Охлопков</span>

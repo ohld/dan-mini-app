@@ -21,9 +21,12 @@ declare global {
           onClick: (cb: () => void) => void
           offClick: (cb: () => void) => void
         }
+        openLink: (url: string, options?: { try_instant_view?: boolean }) => void
+        openTelegramLink: (url: string) => void
       }
     }
     __IS_TMA__?: boolean
+    __openUrl__?: (url: string) => void
   }
 }
 
@@ -43,6 +46,20 @@ if (window.__IS_TMA__) {
   tg.expand()
   tg.setHeaderColor('#F5F5F0')
   tg.setBackgroundColor('#F5F5F0')
+}
+
+// Universal link opener: uses Telegram native methods in TMA, falls back to window.open
+window.__openUrl__ = (url: string) => {
+  const tg = window.Telegram?.WebApp
+  if (window.__IS_TMA__ && tg) {
+    if (url.startsWith('https://t.me/') || url.startsWith('http://t.me/')) {
+      tg.openTelegramLink(url)
+    } else {
+      tg.openLink(url, { try_instant_view: true })
+    }
+  } else {
+    window.open(url, '_blank')
+  }
 }
 
 createRoot(document.getElementById('root')!).render(

@@ -1,6 +1,7 @@
 import { BackButton } from '../components/BackButton'
 import { Footer } from '../components/Footer'
 import { ArrowRightUpIcon } from '../components/Icons'
+import { openUrl } from '../openUrl'
 
 export function ClosedChannel() {
   return (
@@ -29,44 +30,40 @@ export function ClosedChannel() {
       </div>
 
       <div className="course-section">
-        <a
-          href="https://t.me/+A-8hgEh5_7g3NTIy"
-          target="_blank"
-          rel="noopener"
+        <div
           className="course-entry"
+          onClick={() => openUrl('https://t.me/+A-8hgEh5_7g3NTIy')}
+          role="link"
         >
           <p className="course-entry-quote">⭐ Telegram Stars</p>
           <p className="course-entry-context">Подписка через Telegram</p>
-        </a>
-        <a
-          href="https://t.me/xrocket?start=sb_RdKkdVaJ2vp44Cb"
-          target="_blank"
-          rel="noopener"
+        </div>
+        <div
           className="course-entry"
+          onClick={() => openUrl('https://t.me/xrocket?start=sb_RdKkdVaJ2vp44Cb')}
+          role="link"
         >
           <p className="course-entry-quote">₿ Крипта</p>
           <p className="course-entry-context">Через xRocket (USDT, TON)</p>
-        </a>
-        <a
-          href="https://t.me/tribute/app?startapp=ssaB"
-          target="_blank"
-          rel="noopener"
+        </div>
+        <div
           className="course-entry"
+          onClick={() => openUrl('https://t.me/tribute/app?startapp=ssaB')}
+          role="link"
         >
           <p className="course-entry-quote">💳 Карта / Валюта</p>
           <p className="course-entry-context">Через Tribute (RUB, USD, EUR)</p>
-        </a>
+        </div>
       </div>
 
-      <a
-        href="https://t.me/danokhlopkov/1575"
-        target="_blank"
-        rel="noopener"
+      <div
         className="cta-btn"
+        onClick={() => openUrl('https://t.me/danokhlopkov/1575')}
+        role="link"
       >
         <span>Подробнее про канал</span>
         <ArrowRightUpIcon size={20} />
-      </a>
+      </div>
 
       <Footer />
     </div>

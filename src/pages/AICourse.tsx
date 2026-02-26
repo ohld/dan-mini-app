@@ -2,19 +2,20 @@ import { BackButton } from '../components/BackButton'
 import { CourseEntryCard } from '../components/CourseEntryCard'
 import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
+import { openUrl } from '../openUrl'
 
 const SHARE_URL = 'https://t.me/ohldbot'
 const SHARE_TEXT = 'Бесплатный курс по AI-агентам от @danokhlopkov'
 
 function handleShare() {
-  const tg = window.Telegram?.WebApp
-  if (tg && 'switchInlineQuery' in tg) {
-    // In TMA: use Telegram's native share
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, '_blank')
+  const shareLink = `https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`
+  if (window.__IS_TMA__ && window.Telegram?.WebApp) {
+    // In TMA: use Telegram's native share sheet
+    window.Telegram.WebApp.openTelegramLink(shareLink)
   } else if (navigator.share) {
     navigator.share({ title: SHARE_TEXT, url: SHARE_URL }).catch(() => {})
   } else {
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, '_blank')
+    window.open(shareLink, '_blank')
   }
 }
 
@@ -224,19 +225,18 @@ export function AICourse() {
           {section.twitter && (
             <div className="twitter-section">
               {section.twitter.map((t) => (
-                <a
+                <div
                   key={t.handle}
-                  href={t.link}
-                  target="_blank"
-                  rel="noopener"
                   className="twitter-entry"
+                  onClick={() => openUrl(t.link)}
+                  role="link"
                 >
                   <div className="twitter-entry-info">
                     <span className="twitter-entry-handle">{t.handle}</span>
                     <span className="twitter-entry-desc">{t.description}</span>
                   </div>
                   <ArrowRightUpIcon size={16} style={{ opacity: 0.3 }} />
-                </a>
+                </div>
               ))}
             </div>
           )}
@@ -244,15 +244,14 @@ export function AICourse() {
       ))}
 
       {/* CTA */}
-      <a
-        href="https://t.me/+4RC6ScUJArk3YTFi"
-        target="_blank"
-        rel="noopener"
+      <div
         className="cta-btn"
+        onClick={() => openUrl('https://t.me/+4RC6ScUJArk3YTFi')}
+        role="link"
       >
         <span>Задать вопрос в чате</span>
         <ArrowRightUpIcon size={20} />
-      </a>
+      </div>
 
       <Footer />
     </div>

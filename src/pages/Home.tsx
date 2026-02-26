@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
+import { openUrl } from '../openUrl'
 
 const navItems = [
   { path: '/posts', title: 'Топ посты', subtitle: 'Блог и мысли' },
@@ -46,11 +47,10 @@ export function Home() {
         ))}
       </nav>
 
-      <a
-        href="https://www.youtube.com/watch?v=yJuzI2u-AnM"
-        target="_blank"
-        rel="noopener"
+      <div
         className="content-card"
+        onClick={() => openUrl('https://www.youtube.com/watch?v=yJuzI2u-AnM')}
+        role="link"
       >
         <div className="content-card-meta">
           <span>YOUTUBE</span>
@@ -60,20 +60,19 @@ export function Home() {
         <p className="content-card-title">
           Позвал Мишу (@og_mishgun) показать его AI-сетап. Обсуждаем инструменты, которые реально используем каждый день.
         </p>
-      </a>
+      </div>
 
-      <a
-        href="https://t.me/danokhlopkov/1552"
-        target="_blank"
-        rel="noopener"
+      <div
         className="about-card"
+        onClick={() => openUrl('https://t.me/danokhlopkov/1552')}
+        role="link"
       >
         <div className="nav-row-content">
           <span className="nav-row-title">Знакомство</span>
           <span className="nav-row-subtitle">Обо мне подробнее</span>
         </div>
         <ArrowRightUpIcon size={18} style={{ opacity: 0.3 }} />
-      </a>
+      </div>
 
       <Footer />
     </div>

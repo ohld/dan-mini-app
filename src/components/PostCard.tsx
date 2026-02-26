@@ -1,3 +1,5 @@
+import { openUrl } from '../openUrl'
+
 interface PostCardProps {
   title: string
   date: string
@@ -30,7 +32,7 @@ export function PostCard({ title, date, views, fwd, link, tags, subtitle }: Post
     .map((t) => TAG_LABELS[t] || t)
 
   return (
-    <a href={link} target="_blank" rel="noopener" className="post-item">
+    <div className="post-item" onClick={() => openUrl(link)} role="link">
       <div className="post-item-meta">
         <span>{date}</span>
         <span className="post-item-dot" />
@@ -43,6 +45,6 @@ export function PostCard({ title, date, views, fwd, link, tags, subtitle }: Post
       </div>
       <p className="post-item-title">{title}</p>
       {subtitle && <p className="post-item-subtitle">{subtitle}</p>}
-    </a>
+    </div>
   )
 }
