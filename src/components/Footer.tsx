@@ -14,7 +14,7 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-socials">
         {socials.map((s) => (
-          <span key={s.url} onClick={() => openUrl(s.url)} role="link" style={{ cursor: 'pointer' }}>
+          <span key={s.url} onClick={() => openUrl(s.url, 'social', s.url)} role="link" style={{ cursor: 'pointer' }}>
             {s.icon}
           </span>
         ))}

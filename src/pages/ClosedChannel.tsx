@@ -32,7 +32,7 @@ export function ClosedChannel() {
       <div className="course-section">
         <div
           className="course-entry"
-          onClick={() => openUrl('https://t.me/+A-8hgEh5_7g3NTIy')}
+          onClick={() => openUrl('https://t.me/+A-8hgEh5_7g3NTIy', 'subscribe', 'stars')}
           role="link"
         >
           <p className="course-entry-quote">⭐ Telegram Stars</p>
@@ -40,7 +40,7 @@ export function ClosedChannel() {
         </div>
         <div
           className="course-entry"
-          onClick={() => openUrl('https://t.me/xrocket?start=sb_RdKkdVaJ2vp44Cb')}
+          onClick={() => openUrl('https://t.me/xrocket?start=sb_RdKkdVaJ2vp44Cb', 'subscribe', 'crypto')}
           role="link"
         >
           <p className="course-entry-quote">₿ Крипта</p>
@@ -48,7 +48,7 @@ export function ClosedChannel() {
         </div>
         <div
           className="course-entry"
-          onClick={() => openUrl('https://t.me/tribute/app?startapp=ssaB')}
+          onClick={() => openUrl('https://t.me/tribute/app?startapp=ssaB', 'subscribe', 'card')}
           role="link"
         >
           <p className="course-entry-quote">💳 Карта / Валюта</p>
@@ -58,7 +58,7 @@ export function ClosedChannel() {
 
       <div
         className="cta-btn"
-        onClick={() => openUrl('https://t.me/danokhlopkov/1575')}
+        onClick={() => openUrl('https://t.me/danokhlopkov/1575', 'cta', 'about_channel')}
         role="link"
       >
         <span>Подробнее про канал</span>

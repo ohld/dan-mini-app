@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Home } from './pages/Home'
+import { trackPageView } from './analytics'
 
 const postsImport = () => import('./pages/Posts').then(m => ({ default: m.Posts }))
 const courseImport = () => import('./pages/AICourse').then(m => ({ default: m.AICourse }))
@@ -33,8 +34,16 @@ function usePreloadChunks() {
   }, [])
 }
 
+function usePageTracking() {
+  const location = useLocation()
+  useEffect(() => {
+    trackPageView(location.pathname)
+  }, [location.pathname])
+}
+
 function App() {
   usePreloadChunks()
+  usePageTracking()
 
   return (
     <Suspense fallback={null}>

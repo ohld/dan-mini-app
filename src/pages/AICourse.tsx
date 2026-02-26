@@ -3,11 +3,13 @@ import { CourseEntryCard } from '../components/CourseEntryCard'
 import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 import { openUrl } from '../openUrl'
+import { trackShare } from '../analytics'
 
 const SHARE_URL = 'https://t.me/ohldbot/ooo'
 const SHARE_TEXT = 'Бесплатный курс по AI-агентам от @danokhlopkov'
 
 function handleShare() {
+  trackShare()
   const shareLink = `https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`
   if (window.__IS_TMA__ && window.Telegram?.WebApp) {
     // In TMA: use Telegram's native share sheet
@@ -228,7 +230,7 @@ export function AICourse() {
                 <div
                   key={t.handle}
                   className="twitter-entry"
-                  onClick={() => openUrl(t.link)}
+                  onClick={() => openUrl(t.link, 'twitter', t.handle)}
                   role="link"
                 >
                   <div className="twitter-entry-info">
@@ -246,7 +248,7 @@ export function AICourse() {
       {/* CTA */}
       <div
         className="cta-btn"
-        onClick={() => openUrl('https://t.me/+4RC6ScUJArk3YTFi')}
+        onClick={() => openUrl('https://t.me/+4RC6ScUJArk3YTFi', 'cta', 'ask_in_chat')}
         role="link"
       >
         <span>Задать вопрос в чате</span>

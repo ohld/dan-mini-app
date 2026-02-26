@@ -30,7 +30,7 @@ export function WorkTogether() {
 
       <div
         className="about-card"
-        onClick={() => openUrl('https://www.linkedin.com/in/danokhlopkov/')}
+        onClick={() => openUrl('https://www.linkedin.com/in/danokhlopkov/', 'work', 'linkedin')}
         role="link"
       >
         <div className="nav-row-content">
@@ -72,7 +72,7 @@ export function WorkTogether() {
 
       <div
         className="cta-btn"
-        onClick={() => openUrl('https://t.me/danokhlopkov?direct')}
+        onClick={() => openUrl('https://t.me/danokhlopkov?direct', 'cta', 'write_dm')}
         role="link"
       >
         <span>Написать в ТГ</span>

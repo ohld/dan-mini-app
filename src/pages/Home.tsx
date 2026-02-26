@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 import { openUrl } from '../openUrl'
+import { trackNav } from '../analytics'
 
 const navItems = [
   { path: '/posts', title: 'Топ посты', subtitle: 'Блог и мысли' },
@@ -33,7 +34,7 @@ export function Home() {
           <button
             key={item.path}
             className="nav-row"
-            onClick={() => navigate(item.path)}
+            onClick={() => { trackNav(item.path); navigate(item.path) }}
           >
             <div className="nav-row-content">
               <span className="nav-row-title">{item.title}</span>
@@ -49,7 +50,7 @@ export function Home() {
 
       <div
         className="content-card"
-        onClick={() => openUrl('https://www.youtube.com/watch?v=yJuzI2u-AnM')}
+        onClick={() => openUrl('https://www.youtube.com/watch?v=yJuzI2u-AnM', 'home', 'youtube_video')}
         role="link"
       >
         <div className="content-card-meta">
@@ -64,7 +65,7 @@ export function Home() {
 
       <div
         className="about-card"
-        onClick={() => openUrl('https://t.me/danokhlopkov/1552')}
+        onClick={() => openUrl('https://t.me/danokhlopkov/1552', 'home', 'about_me')}
         role="link"
       >
         <div className="nav-row-content">

@@ -32,7 +32,7 @@ export function PostCard({ title, date, views, fwd, link, tags, subtitle }: Post
     .map((t) => TAG_LABELS[t] || t)
 
   return (
-    <div className="post-item" onClick={() => openUrl(link)} role="link">
+    <div className="post-item" onClick={() => openUrl(link, 'post', title)} role="link">
       <div className="post-item-meta">
         <span>{date}</span>
         <span className="post-item-dot" />
