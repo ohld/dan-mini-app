@@ -13,10 +13,23 @@ declare global {
         expand: () => void
         setHeaderColor: (color: string) => void
         setBackgroundColor: (color: string) => void
+        initData: string
+        platform: string
+        BackButton: {
+          show: () => void
+          hide: () => void
+          onClick: (cb: () => void) => void
+          offClick: (cb: () => void) => void
+        }
       }
     }
+    __IS_TMA__?: boolean
   }
 }
+
+// Detect if running inside Telegram Mini App (not just having the SDK loaded)
+// initData is non-empty only when opened from Telegram
+window.__IS_TMA__ = !!(window.Telegram?.WebApp?.initData)
 
 // Clean up Telegram's query params from the hash before React Router sees it
 // Telegram opens: /dan-mini-app/#tgWebAppData=... which HashRouter reads as a route
@@ -24,8 +37,8 @@ if (window.location.hash && window.location.hash.includes('tgWebApp')) {
   window.location.hash = '#/'
 }
 
-const tg = window.Telegram?.WebApp
-if (tg) {
+if (window.__IS_TMA__) {
+  const tg = window.Telegram!.WebApp!
   tg.ready()
   tg.expand()
   tg.setHeaderColor('#F5F5F0')

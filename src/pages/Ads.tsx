@@ -1,5 +1,6 @@
 import { BackButton } from '../components/BackButton'
 import { Footer } from '../components/Footer'
+import { ArrowRightUpIcon } from '../components/Icons'
 
 export function WorkTogether() {
   return (
@@ -36,7 +37,7 @@ export function WorkTogether() {
           <span className="nav-row-title">LinkedIn</span>
           <span className="nav-row-subtitle">Весь опыт и бэкграунд</span>
         </div>
-        <i className="ri-arrow-right-up-line" style={{ fontSize: 18, opacity: 0.3 }} />
+        <ArrowRightUpIcon size={18} style={{ opacity: 0.3 }} />
       </a>
 
       {/* Ads */}
@@ -76,7 +77,7 @@ export function WorkTogether() {
         className="cta-btn"
       >
         <span>Написать в ТГ</span>
-        <i className="ri-arrow-right-up-line" style={{ fontSize: 20 }} />
+        <ArrowRightUpIcon size={20} />
       </a>
 
       <Footer />

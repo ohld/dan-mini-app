@@ -1,6 +1,7 @@
 import { BackButton } from '../components/BackButton'
 import { CourseEntryCard } from '../components/CourseEntryCard'
 import { Footer } from '../components/Footer'
+import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 
 interface CourseEntry {
   postId: number
@@ -150,7 +151,7 @@ export function AICourse() {
             onClick={() => scrollTo(s.id)}
           >
             {s.title}
-            <i className="ri-arrow-right-line" style={{ fontSize: 16, opacity: 0.3 }} />
+            <ArrowRightIcon size={16} style={{ opacity: 0.3 }} />
           </button>
         ))}
       </div>
@@ -211,7 +212,7 @@ export function AICourse() {
                     <span className="twitter-entry-handle">{t.handle}</span>
                     <span className="twitter-entry-desc">{t.description}</span>
                   </div>
-                  <i className="ri-arrow-right-up-line" style={{ fontSize: 16, opacity: 0.3 }} />
+                  <ArrowRightUpIcon size={16} style={{ opacity: 0.3 }} />
                 </a>
               ))}
             </div>
@@ -227,7 +228,7 @@ export function AICourse() {
         className="cta-btn"
       >
         <span>Задать вопрос в чате</span>
-        <i className="ri-arrow-right-up-line" style={{ fontSize: 20 }} />
+        <ArrowRightUpIcon size={20} />
       </a>
 
       <Footer />

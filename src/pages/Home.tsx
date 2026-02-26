@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Footer } from '../components/Footer'
+import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 
 const navItems = [
   { path: '/posts', title: 'Топ посты', subtitle: 'Блог и мысли' },
@@ -39,7 +40,7 @@ export function Home() {
             </div>
             <div className="nav-row-right">
               {item.badge && <span className="nav-row-badge">{item.badge}</span>}
-              <i className="ri-arrow-right-line" style={{ fontSize: 20, opacity: 0.3 }} />
+              <ArrowRightIcon size={20} style={{ opacity: 0.3 }} />
             </div>
           </button>
         ))}
@@ -71,7 +72,7 @@ export function Home() {
           <span className="nav-row-title">Знакомство</span>
           <span className="nav-row-subtitle">Обо мне подробнее</span>
         </div>
-        <i className="ri-arrow-right-up-line" style={{ fontSize: 18, opacity: 0.3 }} />
+        <ArrowRightUpIcon size={18} style={{ opacity: 0.3 }} />
       </a>
 
       <Footer />

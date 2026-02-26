@@ -248,7 +248,14 @@ a {
 }
 
 .content-card:active {
-  border-left-width: 4px;
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.content-card:active .content-card-meta span,
+.content-card:active .content-card-desc {
+  color: rgba(245, 245, 240, 0.7);
 }
 
 .content-card-meta {
@@ -302,7 +309,13 @@ a {
 }
 
 .post-item:active {
-  background: var(--white-overlay);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.post-item:active .post-item-meta span,
+.post-item:active .post-item-subtitle {
+  color: rgba(245, 245, 240, 0.7);
 }
 
 .post-item-meta {
@@ -405,7 +418,12 @@ a {
 }
 
 .course-entry:active {
-  background: var(--white-overlay);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.course-entry:active .course-entry-context {
+  color: rgba(245, 245, 240, 0.7);
 }
 
 .course-entry-quote {
@@ -470,7 +488,12 @@ a {
 }
 
 .twitter-entry:active {
-  background: var(--white-overlay);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.twitter-entry:active .twitter-entry-desc {
+  color: rgba(245, 245, 240, 0.7);
 }
 
 .twitter-entry-info {
@@ -645,7 +668,8 @@ a {
 }
 
 .toc-row:active {
-  background: var(--white-overlay);
+  background: var(--text);
+  color: var(--bg);
 }
 
 /* Load more button */

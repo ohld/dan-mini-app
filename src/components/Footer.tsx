@@ -1,9 +1,11 @@
+import { TelegramIcon, TwitterXIcon, YoutubeIcon, GithubIcon, LinkedinIcon } from './Icons'
+
 const socials = [
-  { url: 'https://t.me/danokhlopkov', icon: 'ri-telegram-fill' },
-  { url: 'https://x.com/danokhlopkov', icon: 'ri-twitter-x-line' },
-  { url: 'https://youtube.com/@danokhlopkov', icon: 'ri-youtube-fill' },
-  { url: 'https://github.com/ohld', icon: 'ri-github-fill' },
-  { url: 'https://www.linkedin.com/in/danokhlopkov/', icon: 'ri-linkedin-fill' },
+  { url: 'https://t.me/danokhlopkov', icon: <TelegramIcon /> },
+  { url: 'https://x.com/danokhlopkov', icon: <TwitterXIcon /> },
+  { url: 'https://youtube.com/@danokhlopkov', icon: <YoutubeIcon /> },
+  { url: 'https://github.com/ohld', icon: <GithubIcon /> },
+  { url: 'https://www.linkedin.com/in/danokhlopkov/', icon: <LinkedinIcon /> },
 ]
 
 export function Footer() {
@@ -12,7 +14,7 @@ export function Footer() {
       <div className="footer-socials">
         {socials.map((s) => (
           <a key={s.url} href={s.url} target="_blank" rel="noopener">
-            <i className={s.icon} />
+            {s.icon}
           </a>
         ))}
       </div>

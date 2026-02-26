@@ -1,5 +1,6 @@
 import { BackButton } from '../components/BackButton'
 import { Footer } from '../components/Footer'
+import { ArrowRightUpIcon } from '../components/Icons'
 
 export function ClosedChannel() {
   return (
@@ -64,7 +65,7 @@ export function ClosedChannel() {
         className="cta-btn"
       >
         <span>Подробнее про канал</span>
-        <i className="ri-arrow-right-up-line" style={{ fontSize: 20 }} />
+        <ArrowRightUpIcon size={20} />
       </a>
 
       <Footer />
