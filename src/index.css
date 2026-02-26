@@ -33,8 +33,7 @@ body {
 #root {
   min-height: 100vh;
   min-height: 100dvh;
-  max-width: 390px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 a {
@@ -56,7 +55,7 @@ a {
 
 /* Page header — large bold title */
 .page-header {
-  padding: 96px 24px 48px;
+  padding: 24px 24px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -90,16 +89,15 @@ a {
 }
 
 .page-header-bio {
-  margin-top: 32px;
+  margin-top: 16px;
   font-size: 15px;
   line-height: 1.6;
   color: rgba(26, 26, 26, 0.8);
-  max-width: 280px;
 }
 
 /* Subpage header (Posts, Course, etc.) */
 .subpage-header {
-  padding: 48px 24px 32px;
+  padding: 24px 24px 20px;
   border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -118,7 +116,6 @@ a {
   font-size: 14px;
   line-height: 1.6;
   color: rgba(26, 26, 26, 0.6);
-  max-width: 280px;
 }
 
 /* Back button */
