@@ -15,13 +15,21 @@ const WorkTogether = lazy(adsImport)
 // Preload all chunks after home page renders so subpages open instantly
 function usePreloadChunks() {
   useEffect(() => {
-    const id = requestIdleCallback(() => {
+    const preload = () => {
       postsImport()
       courseImport()
       closedImport()
       adsImport()
-    })
-    return () => cancelIdleCallback(id)
+    }
+    // requestIdleCallback not available in Telegram WebView (iOS)
+    const id = typeof requestIdleCallback !== 'undefined'
+      ? requestIdleCallback(preload)
+      : setTimeout(preload, 100)
+    return () => {
+      typeof cancelIdleCallback !== 'undefined'
+        ? cancelIdleCallback(id as number)
+        : clearTimeout(id as number)
+    }
   }, [])
 }
 
