@@ -3,6 +3,21 @@ import { CourseEntryCard } from '../components/CourseEntryCard'
 import { Footer } from '../components/Footer'
 import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
 
+const SHARE_URL = 'https://t.me/ohldbot'
+const SHARE_TEXT = 'Бесплатный курс по AI-агентам от @danokhlopkov'
+
+function handleShare() {
+  const tg = window.Telegram?.WebApp
+  if (tg && 'switchInlineQuery' in tg) {
+    // In TMA: use Telegram's native share
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, '_blank')
+  } else if (navigator.share) {
+    navigator.share({ title: SHARE_TEXT, url: SHARE_URL }).catch(() => {})
+  } else {
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(SHARE_URL)}&text=${encodeURIComponent(SHARE_TEXT)}`, '_blank')
+  }
+}
+
 interface CourseEntry {
   postId: number
   quote: string
@@ -178,23 +193,29 @@ export function AICourse() {
             </div>
           )}
 
-          {/* Subsections */}
-          {section.subsections && (
-            <div className="course-section">
-              {section.subsections.map((sub) => (
-                <div key={sub.id} id={sub.id}>
-                  <div className="subsection-header">{sub.title}</div>
-                  {sub.entries.map((entry, i) => (
-                    <CourseEntryCard
-                      key={`${entry.postId}-${i}`}
-                      quote={entry.quote}
-                      context={entry.context}
-                      link={entry.link}
-                    />
-                  ))}
-                </div>
-              ))}
+          {/* Subsections — each in its own bordered box */}
+          {section.subsections?.map((sub) => (
+            <div key={sub.id} id={sub.id}>
+              <div className="subsection-label">{sub.title}</div>
+              <div className="course-section">
+                {sub.entries.map((entry, i) => (
+                  <CourseEntryCard
+                    key={`${entry.postId}-${i}`}
+                    quote={entry.quote}
+                    context={entry.context}
+                    link={entry.link}
+                  />
+                ))}
+              </div>
             </div>
+          ))}
+
+          {/* Share button before "Кого читать" */}
+          {section.twitter && (
+            <button className="cta-btn" onClick={handleShare} style={{ marginBottom: 0 }}>
+              <span>Отправить этот гайд</span>
+              <ArrowRightUpIcon size={20} />
+            </button>
           )}
 
           {/* Twitter list */}

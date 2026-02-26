@@ -449,7 +449,7 @@ a {
   border-bottom: none;
 }
 
-/* Subsection header inside course */
+/* Subsection header inside course (deprecated) */
 .subsection-header {
   padding: 16px 24px 8px;
   font-family: 'JetBrains Mono', monospace;
@@ -459,6 +459,16 @@ a {
   color: var(--accent);
   background: var(--bg);
   border-bottom: 1px solid var(--border-light);
+}
+
+/* Subsection label — standalone above its own bordered box */
+.subsection-label {
+  padding: 20px 24px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
 }
 
 /* Twitter entries */

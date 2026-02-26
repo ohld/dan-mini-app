@@ -22,7 +22,7 @@ export function Home() {
           <span className="page-header-mono">@danokhlopkov</span>
         </div>
         <p className="page-header-bio">
-          Head of Analytics @ TON Foundation. Пишу про AI-агентов, данные и крипту.
+          Head of Analytics @ TON Foundation.<br />Пишу про AI-агентов, данные и крипту.
         </p>
       </header>
 
