@@ -18,6 +18,12 @@ declare global {
   }
 }
 
+// Clean up Telegram's query params from the hash before React Router sees it
+// Telegram opens: /dan-mini-app/#tgWebAppData=... which HashRouter reads as a route
+if (window.location.hash && window.location.hash.includes('tgWebApp')) {
+  window.location.hash = '#/'
+}
+
 const tg = window.Telegram?.WebApp
 if (tg) {
   tg.ready()
