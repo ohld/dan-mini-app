@@ -198,6 +198,14 @@ export function AICourse() {
             </div>
           )}
 
+          {/* Share button after "Как начать" */}
+          {section.id === 'getting-started' && (
+            <button className="cta-btn" onClick={handleShare} style={{ marginBottom: 0 }}>
+              <span>Отправить этот гайд</span>
+              <ArrowRightUpIcon size={20} />
+            </button>
+          )}
+
           {/* Subsections — each in its own bordered box */}
           {section.subsections?.map((sub) => (
             <div key={sub.id} id={sub.id}>
