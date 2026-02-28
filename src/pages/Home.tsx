@@ -5,6 +5,7 @@ import { openUrl } from '../openUrl'
 import { trackNav } from '../analytics'
 
 const navItems = [
+  { path: '/about', title: 'Знакомство', subtitle: 'Обо мне подробнее' },
   { path: '/posts', title: 'Топ посты', subtitle: 'Блог и мысли' },
   { path: '/ai-course', title: 'AI Agents курс', subtitle: 'На основе моих публикаций', badge: 'FREE' },
   { path: '/closed', title: 'Закрытый канал', subtitle: 'Сообщество' },
@@ -62,17 +63,6 @@ export function Home() {
           Позвал Мишу (@og_mishgun) показать его AI-сетап. Обсуждаем инструменты, которые реально используем каждый день.
         </p>
       </div>
-
-      <button
-        className="about-card"
-        onClick={() => { trackNav('/about'); navigate('/about') }}
-      >
-        <div className="nav-row-content">
-          <span className="nav-row-title">Знакомство</span>
-          <span className="nav-row-subtitle">Обо мне подробнее</span>
-        </div>
-        <ArrowRightIcon size={18} style={{ opacity: 0.3 }} />
-      </button>
 
       <Footer />
     </div>
