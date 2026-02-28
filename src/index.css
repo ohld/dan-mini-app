@@ -702,6 +702,58 @@ html, body {
   overscroll-behavior-y: contain;
 }
 
+/* Experience cards (About page) */
+.experience-card {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.experience-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.experience-company {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.experience-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.experience-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.experience-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+}
+
 /* Utility */
 .mt-16 { margin-top: 16px; }
 .mb-32 { margin-bottom: 32px; }

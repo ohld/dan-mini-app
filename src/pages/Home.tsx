@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Footer } from '../components/Footer'
-import { ArrowRightIcon, ArrowRightUpIcon } from '../components/Icons'
+import { ArrowRightIcon } from '../components/Icons'
 import { openUrl } from '../openUrl'
 import { trackNav } from '../analytics'
 
@@ -63,17 +63,16 @@ export function Home() {
         </p>
       </div>
 
-      <div
+      <button
         className="about-card"
-        onClick={() => openUrl('https://t.me/danokhlopkov/1552', 'home', 'about_me')}
-        role="link"
+        onClick={() => { trackNav('/about'); navigate('/about') }}
       >
         <div className="nav-row-content">
           <span className="nav-row-title">Знакомство</span>
           <span className="nav-row-subtitle">Обо мне подробнее</span>
         </div>
-        <ArrowRightUpIcon size={18} style={{ opacity: 0.3 }} />
-      </div>
+        <ArrowRightIcon size={18} style={{ opacity: 0.3 }} />
+      </button>
 
       <Footer />
     </div>

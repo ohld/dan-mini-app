@@ -7,11 +7,13 @@ const postsImport = () => import('./pages/Posts').then(m => ({ default: m.Posts 
 const courseImport = () => import('./pages/AICourse').then(m => ({ default: m.AICourse }))
 const closedImport = () => import('./pages/ClosedChannel').then(m => ({ default: m.ClosedChannel }))
 const adsImport = () => import('./pages/Ads').then(m => ({ default: m.WorkTogether }))
+const aboutImport = () => import('./pages/About').then(m => ({ default: m.About }))
 
 const Posts = lazy(postsImport)
 const AICourse = lazy(courseImport)
 const ClosedChannel = lazy(closedImport)
 const WorkTogether = lazy(adsImport)
+const About = lazy(aboutImport)
 
 // Preload all chunks after home page renders so subpages open instantly
 function usePreloadChunks() {
@@ -21,6 +23,7 @@ function usePreloadChunks() {
       courseImport()
       closedImport()
       adsImport()
+      aboutImport()
     }
     // requestIdleCallback not available in Telegram WebView (iOS)
     const id = typeof requestIdleCallback !== 'undefined'
@@ -53,6 +56,7 @@ function App() {
         <Route path="/ai-course" element={<AICourse />} />
         <Route path="/closed" element={<ClosedChannel />} />
         <Route path="/work-together" element={<WorkTogether />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Suspense>
   )
