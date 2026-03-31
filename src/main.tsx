@@ -46,6 +46,15 @@ if (window.__IS_TMA__) {
   tg.expand()
   tg.setHeaderColor('#F5F5F0')
   tg.setBackgroundColor('#F5F5F0')
+
+  // Track mini-app open (fire-and-forget)
+  if (tg.initData) {
+    fetch('https://ohldbot.swanrate.com/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ initData: tg.initData }),
+    }).catch(() => {})
+  }
 }
 
 // Universal link opener: uses Telegram native methods in TMA, falls back to window.open
