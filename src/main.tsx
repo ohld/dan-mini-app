@@ -49,11 +49,19 @@ if (window.__IS_TMA__) {
 
   // Track mini-app open (fire-and-forget)
   if (tg.initData) {
-    fetch('https://ohldbot.swanrate.com/api/track', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ initData: tg.initData }),
-    }).catch(() => {})
+    const trackOpen = () => {
+      fetch('https://ohldbot.swanrate.com/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          initData: tg.initData,
+          page: window.location.hash.replace('#', '') || '/',
+        }),
+      }).catch(() => {})
+    }
+    trackOpen()
+    // Also track page navigations
+    window.addEventListener('hashchange', trackOpen)
   }
 }
 
